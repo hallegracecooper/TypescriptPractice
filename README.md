@@ -91,3 +91,24 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/TypeScriptPractice.git
+
+
+### Week 1: Wednesday
+**Tasks Completed**:
+- Implemented the `ListManager` class for list handling, with methods to add, remove, and retrieve items.
+- Enhanced the `DirectoryScanner` class with exception handling to manage errors during directory scans.
+- Set up Jest for unit testing and wrote tests for the `ListManager` class.
+
+**Key Code Examples**:
+- Exception Handling in `DirectoryScanner`:
+  ```typescript
+  public scan(): void {
+      try {
+          if (!fs.existsSync(this.directoryPath)) {
+              throw new Error(`Directory not found: ${this.directoryPath}`);
+          }
+          console.log(`Scanning directory: ${this.directoryPath}`);
+      } catch (error) {
+          console.error("Error during directory scan:", error.message);
+      }
+  }
