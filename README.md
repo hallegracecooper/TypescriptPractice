@@ -125,3 +125,28 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
    **Expected Output**:
    ```plaintext
    Data fetched successfully!
+
+   # Week 1 - Friday Work Log
+
+### Tasks Completed:
+1. **Implemented TypeScript Classes**
+   - Created a `Person` class with `name` and `age` properties and a `greet()` method.
+   
+2. **Exception Handling**
+   - Created a `NumberValidator` class to validate whether a string input is a valid number.
+   - Used `try` and `catch` blocks to handle exceptions.
+
+3. **Created `main.ts`**
+   - Used the `Person` and `NumberValidator` classes in `main.ts`.
+   - Demonstrated object creation, method usage, and exception handling.
+
+4. **Added Jest Tests**
+   - Created unit tests for `Person` class and `NumberValidator` class.
+   - Tested the functionality of both classes and confirmed everything passed.
+
+### Outputs:
+- After running `node dist/main.js`, the output was:
+  ```plaintext
+  Hello, my name is John Doe and I am 30 years old.
+  Validated number: 42
+  Invalid number input

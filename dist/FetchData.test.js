@@ -1,4 +1,5 @@
 "use strict";
+// src/FetchData.test.ts
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,24 +10,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchData = void 0;
-// asyncFunctions.ts
-function fetchData() {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve("Data fetched successfully!");
-            }, 2000); // Simulate 2-second delay
+const FetchData_1 = require("./FetchData");
+test('fetchData should return success message', () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield (0, FetchData_1.fetchData)();
+    expect(result).toBe("Data fetched successfully!");
+}));
+test('fetchData should throw error', () => __awaiter(void 0, void 0, void 0, function* () {
+    const fetchDataWithError = () => {
+        return new Promise((_, reject) => {
+            setTimeout(() => reject("Failed to fetch data."), 2000);
         });
-    });
-}
-exports.fetchData = fetchData;
-// Example call
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        console.log("Fetching data...");
-        const result = yield fetchData();
-        console.log(result);
-    });
-}
-run();
+    };
+    yield expect(fetchDataWithError()).rejects.toBe("Failed to fetch data.");
+}));

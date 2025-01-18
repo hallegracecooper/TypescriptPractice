@@ -7,7 +7,7 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "outDir": "./dist",
-      "rootDir": "./"  // Change this line to include the root folder
+      "rootDir": "./src"  
     },
     "include": [
       "src/**/*", 
