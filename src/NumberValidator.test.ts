@@ -1,14 +1,17 @@
-// NumberValidator.test.ts
-import NumberValidator from './NumberValidator';
+import { NumberValidator } from './NumberValidator'; // Use named import
 
 describe('NumberValidator class tests', () => {
-  it('should return the correct number when input is valid', () => {
-    expect(NumberValidator.validateNumber('45')).toBe(45);
+  let validator: NumberValidator;
+
+  beforeAll(() => {
+    validator = new NumberValidator(); // Instantiate the NumberValidator class
   });
 
-  it('should throw error for invalid number input', () => {
-    expect(() => {
-      NumberValidator.validateNumber('invalid');
-    }).toThrow('Invalid number input');
+  it('should return true when input is a valid number', () => {
+    expect(validator.isValid('45')).toBe(true); // Call the isValid method directly
+  });
+
+  it('should return false for invalid number input', () => {
+    expect(validator.isValid('invalid')).toBe(false); // Invalid input
   });
 });

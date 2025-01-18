@@ -1,13 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NumberValidator = void 0;
 // NumberValidator.ts
 class NumberValidator {
-    static validateNumber(input) {
-        const parsedNumber = parseFloat(input);
-        if (isNaN(parsedNumber)) {
-            throw new Error('Invalid number input');
-        }
-        return parsedNumber;
+    isValid(input) {
+        const regex = /^[0-9]+$/; // Simple regex for numeric validation
+        return regex.test(input); // Return true if input matches regex, false otherwise
     }
 }
-exports.default = NumberValidator;
+exports.NumberValidator = NumberValidator;

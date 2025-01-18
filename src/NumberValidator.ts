@@ -1,13 +1,9 @@
 // NumberValidator.ts
-class NumberValidator {
-    static validateNumber(input: string): number {
-      const parsedNumber = parseFloat(input);
-      if (isNaN(parsedNumber)) {
-        throw new Error('Invalid number input');
-      }
-      return parsedNumber;
+export class NumberValidator {
+    public isValid(input: string): boolean {
+        const regex = /^[0-9]+$/; // Simple regex for numeric validation
+        return regex.test(input); // Return true if input matches regex, false otherwise
     }
-  }
-  
-  export default NumberValidator;
+}
+
   

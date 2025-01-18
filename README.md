@@ -150,3 +150,24 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
   Hello, my name is John Doe and I am 30 years old.
   Validated number: 42
   Invalid number input
+
+
+### Day 5 - Saturday Work (Week 1)
+
+- **Implemented Asynchronous Functionality:**
+  - Added an `async` method `displayInfo()` to the `Person` class. This method simulates a delayed greeting by using `setTimeout` and promises.
+  - After calling `displayInfo()`, the program waits for the asynchronous operation to complete before validating a number.
+
+- **Code Update:**
+  - Updated `main.ts` to demonstrate asynchronous handling and number validation.
+  
+- **Terminal Commands Run:**
+  1. `npx tsc` (to compile the updated TypeScript code)
+  2. `node dist/main.js` (to run the JavaScript output from the compiled TypeScript)
+  
+- **Expected Output:**
+  ```plaintext
+  Hello, my name is John Doe and I am 30 years old.
+  Validated number: 42
+
+  

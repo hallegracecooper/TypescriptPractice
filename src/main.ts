@@ -1,34 +1,36 @@
-// main.ts
+// Importing NumberValidator class from the correct file
+import { NumberValidator } from './NumberValidator';
 
-import Person from './Person';
-import NumberValidator from './NumberValidator';
+// Person class to hold name and age
+class Person {
+    constructor(public name: string, public age: number) {}
 
-// Create a Person object
-const person = new Person('John Doe', 30);
-console.log(person.greet());
-
-// Validate number input
-try {
-  const number = NumberValidator.validateNumber('42');
-  console.log(`Validated number: ${number}`);
-} catch (error: unknown) {
-  // Type assertion: assert that the error is an instance of Error
-  if (error instanceof Error) {
-    console.error(error.message);
-  } else {
-    console.error('An unknown error occurred.');
-  }
+    // Method to return the greeting string
+    public getGreeting(): string {
+        return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
 }
 
-// Trying invalid number input
-try {
-  const invalidNumber = NumberValidator.validateNumber('abc');
-  console.log(`Validated number: ${invalidNumber}`);
-} catch (error: unknown) {
-  // Type assertion: assert that the error is an instance of Error
-  if (error instanceof Error) {
-    console.error(error.message);  // Expected output: Invalid number input
-  } else {
-    console.error('An unknown error occurred.');
-  }
+// Function to validate a number using NumberValidator
+function validateNumber(input: string): boolean {
+    const validator = new NumberValidator();
+    return validator.isValid(input);
 }
+
+// Main program
+async function main() {
+    const person = new Person("John Doe", 30); // Create a new Person object
+    console.log(person.getGreeting()); // Output the greeting
+
+    const number = "42"; // Example number to validate
+    const isValid = validateNumber(number); // Validate the number
+
+    if (isValid) {
+        console.log(`Validated number: ${number}`); // Output the validated number
+    } else {
+        console.log("Invalid number input.");
+    }
+}
+
+// Calling the main function
+main();
