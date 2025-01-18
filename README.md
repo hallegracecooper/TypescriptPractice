@@ -112,3 +112,16 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
           console.error("Error during directory scan:", error.message);
       }
   }
+
+
+## Week 1 - Thursday Work Log
+
+### Tasks Completed:
+1. **Implemented Asynchronous Function**
+   - Created an asynchronous function `fetchData()` to simulate fetching data from an API with a 2-second delay using `setTimeout`.
+   - The function resolves with a success message and rejects with an error message.
+   - Used `then()` and `catch()` for handling success and error responses.
+   
+   **Expected Output**:
+   ```plaintext
+   Data fetched successfully!

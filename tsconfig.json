@@ -1,10 +1,19 @@
 {
     "compilerOptions": {
-      "outDir": "./dist",
-      "rootDir": "./src", 
-      "strict": true,
       "module": "commonjs",
-      "target": "es6"
-    }
-  }
-  
+      "target": "es6",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "./dist",
+      "rootDir": "./"  // Change this line to include the root folder
+    },
+    "include": [
+      "src/**/*", 
+      "jest.config.ts"  // Add jest config file here if needed
+, "dist/Factorial.js"    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }  
