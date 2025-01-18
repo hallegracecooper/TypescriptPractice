@@ -170,4 +170,40 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
   Hello, my name is John Doe and I am 30 years old.
   Validated number: 42
 
+  ### Day 6 - Monday Work (Week 2)
+
+- **Implemented List Sorting (Bubble Sort):**
+  - Added a `bubbleSort` function to sort a list of numbers in ascending order using the bubble sort algorithm.
+  - The function iterates through the array, swapping elements if they are out of order, and repeats the process until the array is sorted.
+
+- **Code Update:**
+  - Updated `main.ts` to include a `bubbleSort` function and tested it with an example array `[5, 3, 8, 4, 2]`.
   
+- **Terminal Commands Run:**
+  1. `npx tsc` (to compile the updated TypeScript code)
+  2. `node dist/main.js` (to run the JavaScript output from the compiled TypeScript)
+  
+- **Expected Output:**
+  ```plaintext
+  Before sorting: [ 5, 3, 8, 4, 2 ]
+  After sorting: [ 2, 3, 4, 5, 8 ]
+
+
+### Day 5 - Saturday Work (Week 1)
+
+- **Implemented Asynchronous Functionality:**
+  - Added an `async` method `displayInfo()` to the `Person` class. This method simulates a delayed greeting by using `setTimeout` and promises.
+  - After calling `displayInfo()`, the program waits for the asynchronous operation to complete before validating a number.
+
+- **Code Update:**
+  - Updated `main.ts` to demonstrate asynchronous handling and number validation.
+  
+- **Terminal Commands Run:**
+  1. `npx tsc` (to compile the updated TypeScript code)
+  2. `node dist/main.js` (to run the JavaScript output from the compiled TypeScript)
+  
+- **Expected Output:**
+  ```plaintext
+  Hello, my name is John Doe and I am 30 years old.
+  Validated number: 42
+

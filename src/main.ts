@@ -34,3 +34,70 @@ async function main() {
 
 // Calling the main function
 main();
+
+// main.ts (continued)
+
+function bubbleSort(arr: number[]): number[] {
+    let len = arr.length;
+    let swapped;
+    do {
+      swapped = false;
+      for (let i = 0; i < len - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+          // Swap the elements
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          swapped = true;
+        }
+      }
+    } while (swapped);
+    return arr;
+  }
+  
+  // Test the bubble sort function with a sample array
+  const numbers = [5, 3, 8, 4, 2];
+  console.log("Before sorting:", numbers);
+  console.log("After sorting:", bubbleSort(numbers));
+  
+
+  interface Geo {
+    lat: string;
+    lng: string;
+  }
+  
+  interface Address {
+    street: string;
+    city: string;
+    geo: Geo;
+  }
+  
+  interface User {
+    name: string;
+    username: string;
+    email: string;
+    address: Address;
+  }
+  
+  // Function to fetch and display user data
+  async function fetchUserData() {
+    const url = "https://jsonplaceholder.typicode.com/users";
+    try {
+      const response = await fetch(url);
+      const data: User[] = await response.json(); // Define 'data' as an array of 'User'
+      console.log("Fetched User Data:");
+      
+      // Loop through each user and log their details
+      data.forEach((user: User) => {  // Specify that 'user' is of type 'User'
+        console.log(`Name: ${user.name}`);
+        console.log(`Username: ${user.username}`);
+        console.log(`Email: ${user.email}`);
+        console.log(`Address: ${user.address.street}, ${user.address.city}`);
+        console.log(`Geo: Latitude: ${user.address.geo.lat}, Longitude: ${user.address.geo.lng}`);
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  
+  // Call the asynchronous function to test it
+  fetchUserData();
+  
