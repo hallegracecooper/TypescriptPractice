@@ -1,5 +1,7 @@
 // Importing required classes and functions
 import { NumberValidator } from './NumberValidator';
+import { promises as fs } from 'fs';  // Import fs/promises for async file system operations
+import path from 'path';  // Import path module to work with file paths
 
 // Person class to hold name and age
 class Person {
@@ -8,6 +10,35 @@ class Person {
     // Method to return the greeting string
     public getGreeting(): string {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+
+// DirectoryScanner class to handle directory traversal
+class DirectoryScanner {
+    private rootPath: string;
+
+    constructor(rootPath: string) {
+        this.rootPath = rootPath; // Initialize the rootPath for directory scanning
+    }
+
+    // Function to recursively print the directory structure in a tree-like format
+    async printTree(dirPath: string = this.rootPath, indent: string = ''): Promise<void> {
+        try {
+            const files = await fs.readdir(dirPath, { withFileTypes: true });
+
+            for (const file of files) {
+                const fullPath = path.join(dirPath, file.name);
+
+                if (file.isDirectory()) {
+                    console.log(`${indent}${file.name}/`);
+                    await this.printTree(fullPath, indent + '  ');
+                } else {
+                    console.log(`${indent}${file.name}`);
+                }
+            }
+        } catch (err) {
+            console.error(`Error reading directory: ${err}`);
+        }
     }
 }
 
@@ -51,6 +82,10 @@ export async function main() {
             handleError(error); // Call the error handler
         }
     }
+
+    // Example usage of DirectoryScanner
+    const scanner = new DirectoryScanner('./src'); // Replace with the actual path to start scanning
+    await scanner.printTree(); // Print the directory structure
 }
 
 // Bubble Sort Algorithm

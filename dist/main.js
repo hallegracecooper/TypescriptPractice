@@ -8,10 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.factorial = exports.fetchUserData = exports.bubbleSort = exports.main = exports.validateNumber = void 0;
 // Importing required classes and functions
 const NumberValidator_1 = require("./NumberValidator");
+const fs_1 = require("fs"); // Import fs/promises for async file system operations
+const path_1 = __importDefault(require("path")); // Import path module to work with file paths
 // Person class to hold name and age
 class Person {
     constructor(name, age) {
@@ -21,6 +26,33 @@ class Person {
     // Method to return the greeting string
     getGreeting() {
         return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    }
+}
+// DirectoryScanner class to handle directory traversal
+class DirectoryScanner {
+    constructor(rootPath) {
+        this.rootPath = rootPath; // Initialize the rootPath for directory scanning
+    }
+    // Function to recursively print the directory structure in a tree-like format
+    printTree(dirPath = this.rootPath, indent = '') {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const files = yield fs_1.promises.readdir(dirPath, { withFileTypes: true });
+                for (const file of files) {
+                    const fullPath = path_1.default.join(dirPath, file.name);
+                    if (file.isDirectory()) {
+                        console.log(`${indent}${file.name}/`);
+                        yield this.printTree(fullPath, indent + '  ');
+                    }
+                    else {
+                        console.log(`${indent}${file.name}`);
+                    }
+                }
+            }
+            catch (err) {
+                console.error(`Error reading directory: ${err}`);
+            }
+        });
     }
 }
 // Function to validate a number using NumberValidator
@@ -62,6 +94,9 @@ function main() {
                 handleError(error); // Call the error handler
             }
         }
+        // Example usage of DirectoryScanner
+        const scanner = new DirectoryScanner('./src'); // Replace with the actual path to start scanning
+        yield scanner.printTree(); // Print the directory structure
     });
 }
 exports.main = main;
