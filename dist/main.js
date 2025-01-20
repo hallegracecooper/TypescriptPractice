@@ -9,7 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// Importing NumberValidator class from the correct file
+exports.factorial = exports.fetchUserData = exports.bubbleSort = exports.main = exports.validateNumber = void 0;
+// Importing required classes and functions
 const NumberValidator_1 = require("./NumberValidator");
 // Person class to hold name and age
 class Person {
@@ -27,24 +28,44 @@ function validateNumber(input) {
     const validator = new NumberValidator_1.NumberValidator();
     return validator.isValid(input);
 }
-// Main program
+exports.validateNumber = validateNumber;
+function handleError(error) {
+    console.error("Error:", error.message);
+}
+try {
+    // Some code that might throw
+}
+catch (error) {
+    if (error instanceof Error) {
+        handleError(error);
+    }
+}
+// Main program with try-catch and error handling
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const person = new Person("John Doe", 30); // Create a new Person object
-        console.log(person.getGreeting()); // Output the greeting
-        const number = "42"; // Example number to validate
-        const isValid = validateNumber(number); // Validate the number
-        if (isValid) {
-            console.log(`Validated number: ${number}`); // Output the validated number
+        try {
+            const person = new Person("John Doe", 30); // Create a new Person object
+            console.log(person.getGreeting()); // Output the greeting
+            const number = "42"; // Example number to validate
+            const isValid = validateNumber(number); // Validate the number
+            if (isValid) {
+                console.log(`Validated number: ${number}`); // Output the validated number
+            }
+            else {
+                console.log("Invalid number input.");
+            }
+            // Example of throwing an error manually
+            throw new Error("An unexpected error occurred in the main function.");
         }
-        else {
-            console.log("Invalid number input.");
+        catch (error) {
+            if (error instanceof Error) {
+                handleError(error); // Call the error handler
+            }
         }
     });
 }
-// Calling the main function
-main();
-// main.ts (continued)
+exports.main = main;
+// Bubble Sort Algorithm
 function bubbleSort(arr) {
     let len = arr.length;
     let swapped;
@@ -60,16 +81,16 @@ function bubbleSort(arr) {
     } while (swapped);
     return arr;
 }
-// Test the bubble sort function with a sample array
-const numbers = [5, 3, 8, 4, 2];
-console.log("Before sorting:", numbers);
-console.log("After sorting:", bubbleSort(numbers));
+exports.bubbleSort = bubbleSort;
 // Function to fetch and display user data
 function fetchUserData() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://jsonplaceholder.typicode.com/users";
         try {
             const response = yield fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = yield response.json(); // Define 'data' as an array of 'User'
             console.log("Fetched User Data:");
             // Loop through each user and log their details
@@ -82,9 +103,28 @@ function fetchUserData() {
             });
         }
         catch (error) {
-            console.error("Error fetching data:", error);
+            if (error instanceof Error) {
+                console.error("Error fetching data:", error.message);
+            }
+            else {
+                console.error("Unknown error occurred.");
+            }
         }
     });
 }
+exports.fetchUserData = fetchUserData;
+// Factorial Function
+function factorial(n) {
+    if (n === 0)
+        return 1;
+    return n * factorial(n - 1);
+}
+exports.factorial = factorial;
+// Test the bubble sort function with a sample array
+const numbers = [5, 3, 8, 4, 2];
+console.log("Before sorting:", numbers);
+console.log("After sorting:", bubbleSort(numbers));
+// Calling the main function
+main();
 // Call the asynchronous function to test it
 fetchUserData();

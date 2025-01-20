@@ -12,7 +12,7 @@
     "include": [
       "src/**/*", 
       "jest.config.ts"  // Add jest config file here if needed
-, "dist/Factorial.js"    ],
+, "dist/Factorial.js", "jest.config.js"    ],
     "exclude": [
       "node_modules"
     ]

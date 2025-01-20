@@ -207,3 +207,76 @@ The Directory Scanner Project is a TypeScript-based program designed to recursiv
   Hello, my name is John Doe and I am 30 years old.
   Validated number: 42
 
+### Day 8 - Wednesday Work (Week 2)
+
+- **Implemented Error Handling:**
+  - Added a function `getUserById` that simulates fetching data for a user. If the provided user ID is invalid (less than or equal to 0), it throws an exception.
+  - Used a `try...catch` block to handle the thrown exception and display an error message.
+
+- **Code Update:**
+  - Updated `main.ts` to include the `getUserById` function, which throws an exception for invalid user IDs.
+
+- **Terminal Commands Run:**
+  1. `npx tsc` (to compile the updated TypeScript code)
+  2. `node dist/main.js` (to run the JavaScript output from the compiled TypeScript)
+  
+- **Expected Output:**
+  ```plaintext
+  Error: Invalid user ID. ID must be a positive number.
+
+
+# README.md
+
+## **Thursday Week 2 - Progress Log**
+
+### **1. Recursion:**
+- **Task**: Implement a recursive function.
+- **Implementation**: I implemented a recursive function `factorial(n: number)` to calculate the factorial of a given number. The function calls itself until the base case `n <= 1` is reached.
+- **Tested**: I tested the factorial function by calculating the factorial of 5, which correctly returned `120`.
+
+### **2. Exception Handling:**
+- **Task**: Implement exception handling using `try`, `catch`, and `throw`.
+- **Implementation**: I modified the `fetchUserData` function to handle potential errors. The function now throws an error if the network response is not successful, and I included a `catch` block to log any errors that occur during the fetch operation.
+- **Tested**: The function was tested with a valid API call, and I simulated an error condition by modifying the URL, which triggered the error handling.
+
+### **3. Jest Testing:**
+- **Task**: Write Jest tests for the recursive `factorial` function.
+- **Implementation**: I set up Jest in my project and wrote tests to verify the correctness of the `factorial` function. The tests check for expected values for various inputs.
+- **Tested**: The tests passed successfully, confirming that the `factorial` function works as expected for multiple inputs.
+
+---
+
+### **Commands Run:**
+
+1. **Factorial Function Test Output**:
+    - Running the `factorial` function in the console gave the correct output of `120` for an input of `5`.
+
+    ```bash
+    Factorial of 5: 120
+    ```
+
+2. **Error Handling Output**:
+    - For a successful fetch request, the user data was logged in the console.
+    - For an error condition, such as an invalid URL, the error message was displayed:
+
+    ```bash
+    Error fetching data: Network response was not ok
+    ```
+
+3. **Jest Test Output**:
+    - Running Jest tests confirmed that the `factorial` function works correctly for multiple inputs:
+
+    ```bash
+    PASS  ./factorial.test.ts
+      Factorial function tests
+        ✓ Factorial of 5 should be 120 (5 ms)
+        ✓ Factorial of 0 should be 1 (1 ms)
+        ✓ Factorial of 1 should be 1 (1 ms)
+        ✓ Factorial of 3 should be 6 (1 ms)
+    Test Suites: 1 passed, 1 total
+    Tests:       4 passed, 4 total
+    Snapshots:   0 total
+    Time:        0.94 s, estimated 3 s
+    ```
+
+---
